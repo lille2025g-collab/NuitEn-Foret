@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Nuit de la Forêt – Daoukro, Côte d'Ivoire</title>
+<style>
+:root {
+  --vert-foret: #1B4332;
+  --vert-profond: #2D6A4F;
+  --orange-feu: #E76F51;
+  --or-sable: #F4A261;
+  --terre-cuite: #BC6C25;
+  --creme: #FFF8E7;
+  --noir-doux: #1A1A1A;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Lato', 'Open Sans', sans-serif;
+  color: var(--noir-doux);
+  background: var(--creme);
+  line-height: 1.6;
+}
+h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 800; }
+
+/* NAVBAR */
+nav {
+  position: fixed; top:0; width:100%; z-index:100;
+  background: rgba(27,67,50,0.95);
+  padding: 12px 20px;
+  display:flex; justify-content:space-between; align-items:center;
+  backdrop-filter: blur(6px);
+}
+nav .logo { color: var(--or-sable); font-weight:800; font-size:1.15rem; }
+nav ul { list-style:none; display:flex; gap:18px; flex-wrap:wrap; }
+nav ul li a { color: var(--creme); text-decoration:none; font-size:0.95rem; transition: color .3s; }
+nav ul li a:hover { color: var(--or-sable); }
+.burger { display:none; color:var(--creme); font-size:1.6rem; cursor:pointer; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(27,67,50,0.85)),
+    url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
+  text-align:center; color:var(--creme); padding: 100px 20px 60px;
+}
+.hero .pays { letter-spacing:3px; font-size:0.9rem; }
+.hero h1 {
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  color: var(--or-sable);
+  letter-spacing: 2px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.7);
+  margin: 12px 0;
+}
+.hero .sub { font-size: clamp(1rem, 2vw, 1.25rem); max-width: 800px; margin: 20px auto; }
+.hero .accroche { font-style: italic; color: var(--or-sable); margin-bottom: 30px; }
+
+/* BOUTONS */
+.btn {
+  display:inline-block; padding: 14px 32px; border-radius: 30px;
+  background: var(--orange-feu); color: var(--creme);
+  text-decoration:none; font-weight:700; letter-spacing:1px;
+  transition: transform .2s, background .3s;
+  border:none; cursor:pointer; font-size:1rem; margin: 5px;
+}
+.btn:hover { background: var(--terre-cuite); transform: translateY(-2px); }
+.btn-outline { background: transparent; border: 2px solid var(--or-sable); color: var(--or-sable); }
+.btn-outline:hover { background: var(--or-sable); color: var(--noir-doux); }
+
+/* SECTIONS */
+section { padding: 70px 20px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--vert-foret); text-align:center; margin-bottom: 12px;
+}
+.section-title::after {
+  content:''; display:block; width:70px; height:4px;
+  background: var(--orange-feu); margin: 14px auto 0; border-radius:2px;
+}
+.section-sub { text-align:center; color:#555; margin-bottom: 40px; font-size:1.05rem; }
+.bg-cream { background: #f9f5ea; }
+
+/* MENU */
+.menu-grid {
+  display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.plat {
+  background:#fff; padding: 18px 20px; border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border-left: 5px solid var(--or-sable);
+  transition: transform .3s;
+}
+.plat:hover { transform: translateY(-5px); }
+.plat h4 { color: var(--vert-foret); margin-bottom: 6px; font-size:1.05rem; }
+.plat p { font-size: 0.9rem; color:#555; }
+.boissons { text-align:center; margin-top:30px; font-weight:600; color:var(--vert-foret); }
+
+/* CARDS */
+.cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 25px; }
+.card {
+  background:#fff; border-radius: 16px; overflow:hidden;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.1); transition: transform .3s;
+}
+.card:hover { transform: translateY(-8px); }
+.card-img { height: 180px; background-size:cover; background-position:center; }
+.img-hotel { background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80'); }
+.img-tente { background-image:url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80'); }
+.card-body { padding: 22px; }
+.card h3 { color: var(--vert-foret); margin-bottom: 12px; }
+.card ul { list-style: none; padding-left: 0; }
+.card ul li { padding: 5px 0 5px 24px; position:relative; font-size:0.95rem; }
+.card ul li::before { content:'✓'; position:absolute; left:0; color: var(--orange-feu); font-weight:800; }
+
+/* IMMERSION */
+.immersion { background: var(--vert-foret); color: var(--creme); }
+.immersion .section-title { color: var(--or-sable); }
+.immersion .section-sub { color: #d8e6dd; }
+.immersion-list {
+  list-style: none; max-width: 900px; margin: 0 auto;
+  display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 12px;
+}
+.immersion-list li {
+  padding: 12px 16px 12px 44px; position:relative;
+  background: rgba(255,255,255,0.08); border-radius: 10px; font-size:0.95rem;
+}
+.immersion-list li::before { content:'🌿'; position:absolute; left:14px; top:12px; }
+
+/* TRANSPORT */
+.transport-box {
+  background: var(--or-sable); color: var(--noir-doux);
+  padding: 40px 25px; border-radius: 18px; text-align:center;
+  max-width: 800px; margin: 0 auto;
+}
+.transport-box h2 { color: var(--vert-foret); margin-bottom: 20px; }
+.transport-box ul { list-style:none; display:inline-block; text-align:left; }
+.transport-box ul li { padding: 6px 0; font-weight:600; }
+.transport-box ul li::before { content:'🚌 '; }
+
+/* TARIFS */
+.tarifs-table {
+  width:100%; border-collapse: collapse; overflow:hidden;
+  border-radius: 14px; box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+  background:#fff;
+}
+.tarifs-table th { background: var(--vert-foret); color: var(--or-sable); padding: 14px; text-align:left; font-size:0.95rem; }
+.tarifs-table td { padding: 14px; border-bottom: 1px solid #eee; font-size:0.95rem; }
+.tarifs-table tr:hover td { background: #f9f5ea; }
+.inclus { display:flex; flex-wrap:wrap; gap:20px; margin-top:25px; justify-content:center; }
+.inclus div {
+  background:#fff; padding: 18px 22px; border-radius:12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08); max-width: 380px;
+  border-top: 4px solid var(--vert-profond);
+}
+.inclus h4 { color: var(--vert-foret); margin-bottom:8px; }
+
+/* DATES */
+.dates-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 18px; }
+.date-card {
+  background: var(--vert-foret); color: var(--creme);
+  padding: 22px; border-radius: 14px; text-align:center;
+  border-left: 6px solid var(--orange-feu);
+}
+.date-card strong { color: var(--or-sable); display:block; font-size:1.1rem; margin-bottom:6px; }
+
+/* RESERVATION */
+.reservation {
+  background: linear-gradient(rgba(27,67,50,0.92), rgba(27,67,50,0.92)),
+              url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80') center/cover;
+  color: var(--creme);
+}
+.reservation .section-title { color: var(--or-sable); }
+.reservation .section-sub { color: #d8e6dd; }
+form {
+  max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.08);
+  padding: 30px; border-radius: 16px; backdrop-filter: blur(6px);
+}
+.form-row { display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom:16px; }
+.form-row.single { grid-template-columns: 1fr; }
+label { display:block; margin-bottom:6px; font-size:0.9rem; color: var(--or-sable); font-weight:600; }
+input, select, textarea {
+  width:100%; padding: 12px 14px; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.3); color: var(--creme);
+  font-size: 0.95rem; font-family: inherit;
+}
+input::placeholder, textarea::placeholder { color: #b8c9c0; }
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--or-sable); border-color: var(--or-sable);
+}
+select option { color: var(--noir-doux); }
+form .btn { width:100%; margin-top: 10px; font-size: 1.05rem; }
+form .btn:disabled { opacity:.6; cursor: wait; transform: none; }
+.confirmation {
+  display:none; margin-top: 20px; padding: 16px;
+  background: rgba(244,162,97,0.15); border: 1px solid var(--or-sable);
+  border-radius: 10px; color: var(--or-sable); text-align:center;
+}
+.confirmation.ok {
+  background: rgba(45,106,79,0.45);
+  border-color: #7BC49A;
+  color: #D6F5E3;
+}
+.confirmation.err {
+  background: rgba(231,111,81,0.20);
+  border-color: var(--orange-feu);
+  color: #FFD9CC;
+}
+.confirmation a { color: var(--or-sable); font-weight: 700; }
+
+/* CONTACT */
+.contact-grid {
+  display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 20px; margin-top: 30px;
+}
+.contact-card {
+  background:#fff; padding: 25px; border-radius: 14px; text-align:center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border-bottom: 4px solid var(--or-sable);
+}
+.contact-card .ico { font-size: 2rem; margin-bottom: 10px; }
+.contact-card a { color: var(--vert-foret); font-weight:700; text-decoration:none; }
+
+/* FOOTER */
+footer {
+  background: var(--noir-doux); color: #999;
+  text-align:center; padding: 30px 20px; font-size: 0.85rem;
+}
+footer strong { color: var(--or-sable); }
+
+/* RESPONSIVE */
+@media (max-width: 780px) {
+  nav ul {
+    display:none; position:absolute; top:60px; left:0; right:0;
+    background: rgba(27,67,50,0.98); flex-direction:column; padding: 20px; gap:14px;
+  }
+  nav ul.open { display:flex; }
+  .burger { display:block; }
+  .form-row { grid-template-columns: 1fr; }
+  .tarifs-table { font-size: 0.85rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🌿 LA NUIT DE LA FORÊT</div>
+  <span class="burger" onclick="toggleMenu()">☰</span>
+  <ul id="menuNav">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#hebergement">Hébergement</a></li>
+    <li><a href="#immersion">Immersion</a></li>
+    <li><a href="#tarifs">Tarifs</a></li>
+    <li><a href="#dates">Dates</a></li>
+    <li><a href="#reservation">Réservation</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <p class="pays">CÔTE D'IVOIRE • DAOUKRO • RÉGION DU N'ZI</p>
+  <h1>LA NUIT DE LA FORÊT</h1>
+  <p class="sub">Soirées africaines en pleine forêt – Cuisine ivoirienne & baoulé, viande de brousse, hôtel & tentes, champs d'hévéa & cacao.</p>
+  <p class="accroche">« Vivez une expérience unique entre nature, tradition et gastronomie ivoirienne. »</p>
+  <a href="#reservation" class="btn">Réserver maintenant</a>
+  <a href="#menu" class="btn btn-outline">Découvrir le menu</a>
+</header>
+
+<section id="menu">
+  <div class="container">
+    <h2 class="section-title">Au Menu – Saveurs Ivoiriennes & Baoulé</h2>
+    <p class="section-sub">Une cuisine authentique, mijotée au feu de bois, aux saveurs de Daoukro.</p>
+    <div class="menu-grid">
+      <div class="plat"><h4>Kedjenou de brousse</h4><p>Mijoté à l'étouffée dans un canari en terre cuite.</p></div>
+      <div class="plat"><h4>Agouti braisé</h4><p>Grillé au feu de bois, mariné aux épices locales.</p></div>
+      <div class="plat"><h4>Biche en sauce graine</h4><p>Sauce onctueuse de noix de palmiste.</p></div>
+      <div class="plat"><h4>Hérisson en sauce claire</h4><p>Viande légère parfumée au poisson fumé.</p></div>
+      <div class="plat"><h4>Foutou banane & n'gatietro</h4><p>Spécialité baoulé – igname pilée, sauce tomate épicée.</p></div>
+      <div class="plat"><h4>Attiéké & poisson braisé</h4><p>Classique ivoirien incontournable.</p></div>
+      <div class="plat"><h4>Alloco</h4><p>Bananes plantains frites, sauce piment.</p></div>
+      <div class="plat"><h4>Akpessi</h4><p>Sauce baoulé au gombo et huile de palme.</p></div>
+      <div class="plat"><h4>Riz sauce arachide</h4><p>Onctueux et parfumé à la pâte d'arachide.</p></div>
+      <div class="plat"><h4>Brochettes de brousse</h4><p>Grillées sur place, marinées aux épices.</p></div>
+    </div>
+    <p class="boissons">🍹 Boissons : Bandji  • Gnamankoudji • Koutoukou • Dégué • Bierres | 🍍 Desserts : Bananes • Mangues de la région</p>
+  </div>
+</section>
+
+<section id="hebergement" class="bg-cream">
+  <div class="container">
+    <h2 class="section-title">Deux Formules d'Hébergement</h2>
+    <p class="section-sub">Choisissez le confort de l'hôtel ou l'aventure du bivouac en forêt.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-img img-hotel"></div>
+        <div class="card-body">
+          <h3>🏨 Formule Hôtel</h3>
+          <ul>
+            <li>Chambres climatisées</li>
+            <li>Salle de bain privée</li>
+            <li>Petit-déjeuner inclus</li>
+            <li>Piscine & espace détente</li>
+            <li>Restaurant sur place</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img img-tente"></div>
+        <div class="card-body">
+          <h3>⛺ Formule Tentes / Bivouac</h3>
+          <ul>
+            <li>Tentes confortables 2 à 4 places</li>
+            <li>Matelas, couvertures, lampes fournis</li>
+            <li>Espace feu de camp</li>
+            <li>Sanitaires aménagés</li>
+            <li>Veillée contes baoulé</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="immersion" class="immersion">
+  <div class="container">
+    <h2 class="section-title">Immersion dans les Champs d'Hévéa & Cacao</h2>
+    <p class="section-sub">Découvrez les richesses agricoles de la région du N'Zi.</p>
+    <ul class="immersion-list">
+      <li>Visite guidée d'une plantation d'hévéa : saignée du latex, transformation</li>
+      <li>Promenade dans une cacaoière : de la cabosse au chocolat</li>
+      <li>Dégustation de chocolat artisanal local</li>
+      <li>Cueillette de fruits de saison : mangues, ananas, papayes, agrumes</li>
+      <li>Atelier de transformation du manioc : attiéké fait maison</li>
+      <li>Randonnée nature : oiseaux, plantes médicinales, arbres centenaires</li>
+      <li>Pêche traditionnelle dans les rivières environnantes</li>
+      <li>Rencontre avec les producteurs locaux</li>
+      <li>Soirée contes & danses baoulé autour du feu</li>
+      <li>Photographie : paysages, faune, flore et convivialité</li>
+    </ul>
+  </div>
+</section>
+
+<section id="transport">
+  <div class="container">
+    <div class="transport-box">
+      <h2>🚌 Transport Inclus</h2>
+      <ul>
+        <li>Transport aller-retour depuis Abidjan ou autre ville</li>
+        <li>Bus climatisé ou 4x4</li>
+        <li>Transferts sur place (hôtel, plantations, sites de soirée)</li>
+        <li>Guide accompagnateur tout au long du séjour</li>
+        <li>Carburant & péages inclus</li>
+        <li>Assurance voyage de base</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="tarifs" class="bg-cream">
+  <div class="container">
+    <h2 class="section-title">Formules & Tarifs</h2>
+    <p class="section-sub">Tarifs indicatifs par personne – réductions pour groupes.</p>
+    <table class="tarifs-table">
+      <thead>
+        <tr><th>Formule</th><th>Durée</th><th>Hébergement</th><th>Prix indicatif</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Découverte</td><td>1 jour / 0 nuit</td><td>—</td><td>25 000 FCFA</td></tr>
+        <tr><td>Nuit en forêt</td><td>1 nuit</td><td>Tente</td><td>45 000 FCFA</td></tr>
+        <tr><td>Week-end Nature</td><td>2 jours / 1 nuit</td><td>Tente ou Hôtel</td><td>75 000 – 95 000 FCFA</td></tr>
+        <tr><td>Séjour Immersion</td><td>3 jours / 2 nuits</td><td>Hôtel</td><td>130 000 – 150 000 FCFA</td></tr>
+        <tr><td>Groupe (10 pers. et +)</td><td>Sur mesure</td><td>Au choix</td><td>-15%</td></tr>
+      </tbody>
+    </table>
+    <div class="inclus">
+      <div>
+        <h4>✅ Inclus</h4>
+        <p>Transport, repas, hébergement, activités, guide.</p>
+      </div>
+      <div>
+        <h4>❌ Non inclus</h4>
+        <p>Dépenses personnelles, boissons supplémentaires, pourboires.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dates">
+  <div class="container">
+    <h2 class="section-title">Prochaines Dates</h2>
+    <p class="section-sub">Places limitées – réservation obligatoire.</p>
+    <div class="dates-grid">
+      
+      <div class="date-card"><strong>A demander </strong>Week-end Cacao & Forêt</div>
+   
+      
+    </div>
+  </div>
+</section>
+
+<section id="reservation" class="reservation">
+  <div class="container">
+    <h2 class="section-title">Réservation en Ligne</h2>
+    <p class="section-sub">Remplissez le formulaire, nous confirmons sous 24h.</p>
+
+    <form id="reservationForm" onsubmit="return envoyerReservation(event)">
+      <!-- ===== Champs Web3Forms (ne pas modifier) ===== -->
+      <input type="hidden" name="access_key" value="088a55d1-d9ac-40fc-a4a2-a060cda22bc1">
+      <input type="hidden" name="subject" value="🌿 Nouvelle réservation – La Nuit de la Forêt">
+      <input type="hidden" name="from_name" value="Site La Nuit de la Forêt">
+      <input type="checkbox" name="botcheck" style="display:none !important" tabindex="-1" autocomplete="off">
+      <!-- ============================================= -->
+
+      <div class="form-row">
+        <div>
+          <label for="nom">Nom complet *</label>
+          <input type="text" id="nom" name="nom" required placeholder="Votre nom">
+        </div>
+        <div>
+          <label for="tel">Téléphone / WhatsApp *</label>
+          <input type="tel" id="tel" name="telephone" required placeholder="+225 XX XX XX XX XX">
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="votre@email.com">
+        </div>
+        <div>
+          <label for="personnes">Nombre de personnes *</label>
+          <input type="number" id="personnes" name="personnes" min="1" value="2" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label for="formule">Formule choisie *</label>
+          <select id="formule" name="formule" required>
+            <option value="">-- Choisir --</option>
+            <option>Découverte – 25 000 FCFA</option>
+            <option>Nuit en forêt (Tente) – 45 000 FCFA</option>
+            <option>Week-end Nature – 75 000 à 95 000 FCFA</option>
+            <option>Séjour Immersion – 130 000 à 150 000 FCFA</option>
+            <option>Groupe (10 pers. et +) – Devis personnalisé</option>
+          </select>
+        </div>
+        <div>
+          <label for="date">Date souhaitée *</label>
+          <input type="date" id="date" name="date_reservee" required>
+        </div>
+      </div>
+      <div class="form-row single">
+        <div>
+          <label for="message">Message / Demandes spéciales</label>
+          <textarea id="message" name="message" rows="4" placeholder="Régime alimentaire, allergies, transport depuis une autre ville…"></textarea>
+        </div>
+      </div>
+      <button type="submit" class="btn">Envoyer ma réservation</button>
+      <div class="confirmation" id="confirmation"></div>
+    </form>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Contact</h2>
+    <p class="section-sub">Une question ? Nous sommes disponibles 7j/7.</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="ico">📱</div>
+        <h4>Téléphone / WhatsApp</h4>
+        <a href="tel:+2250575232376">+225 05 75 23 23 76</a>
+      </div>
+      <div class="contact-card">
+        <div class="ico">📧</div>
+        <h4>Email</h4>
+        <a href="mailto:bonjour2k@proton.me">bonjour2k@proton.me</a>
+      </div>
+      <div class="contact-card">
+        <div class="ico">📘</div>
+        <h4>Réseaux sociaux</h4>
+        <a href="#">@NuitForetCI</a>
+      </div>
+      <div class="contact-card">
+        <div class="ico">📍</div>
+        <h4>Localisation</h4>
+        <span>Daoukro – Région du N'Zi, Côte d'Ivoire</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>La Nuit de la Forêt</strong> – Daoukro, Côte d'Ivoire</p>
+  <p>Viande de brousse issue de filières légales et contrôlées. Espèces protégées non consommées.</p>
+  <p>© 2025 La Nuit de la Forêt – Tous droits réservés.</p>
+</footer>
+
+<script>
+/* ============================================================
+   CONFIGURATION
+   ============================================================ */
+const CONFIG = {
+  web3formsKey: '088a55d1-d9ac-40fc-a4a2-a060cda22bc1',
+  emailSecours: 'bonjour2k@proton.me',
+  whatsapp:     '2250575232376'
+};
+
+/* ============================================================
+   MENU MOBILE
+   ============================================================ */
+function toggleMenu() {
+  document.getElementById('menuNav').classList.toggle('open');
+}
+document.querySelectorAll('#menuNav li a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('menuNav').classList.remove('open');
+  });
+});
+
+/* ============================================================
+   RÉSERVATION + ENVOI EMAIL VIA WEB3FORMS
+   ============================================================ */
+async function envoyerReservation(e) {
+  e.preventDefault();
+
+  const form         = document.getElementById('reservationForm');
+  const bouton       = form.querySelector('button[type="submit"]');
+  const confirmation = document.getElementById('confirmation');
+
+  const data = {
+    nom:            document.getElementById('nom').value.trim(),
+    telephone:      document.getElementById('tel').value.trim(),
+    email:          document.getElementById('email').value.trim(),
+    personnes:      document.getElementById('personnes').value,
+    formule:        document.getElementById('formule').value,
+    date_reservee:  document.getElementById('date').value,
+    message:        document.getElementById('message').value.trim()
+  };
+
+  /* Historique local */
+  const reservations = JSON.parse(localStorage.getItem('reservations') || '[]');
+  reservations.push({ ...data, timestamp: new Date().toISOString() });
+  localStorage.setItem('reservations', JSON.stringify(reservations));
+
+  /* UI : état "envoi" */
+  bouton.disabled = true;
+  bouton.textContent = 'Envoi en cours…';
+  confirmation.style.display = 'none';
+  confirmation.className = 'confirmation';
+
+  /* Envoi Web3Forms (JSON) */
+  let envoye = false;
+  try {
+    const reponse = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        access_key: CONFIG.web3formsKey,
+        subject:    '🌿 Nouvelle réservation – La Nuit de la Forêt',
+        from_name:  'Site La Nuit de la Forêt',
+        replyto:    data.email || CONFIG.emailSecours,
+        ...data
+      })
+    });
+    const resultat = await reponse.json();
+    envoye = resultat.success === true;
+    if (!envoye) console.warn('Web3Forms a refusé :', resultat);
+  } catch (err) {
+    console.warn('Envoi email impossible :', err);
+    envoye = false;
+  }
+
+  bouton.disabled = false;
+  bouton.textContent = 'Envoyer ma réservation';
+
+  /* Liens de secours si l'envoi échoue */
+  const texte       = texteBrut(data);
+  const lienMail    = `mailto:${CONFIG.emailSecours}?subject=${encodeURIComponent('Réservation – La Nuit de la Forêt')}&body=${encodeURIComponent(texte)}`;
+  const lienWa      = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(texte)}`;
+
+  if (envoye) {
+    confirmation.className = 'confirmation ok';
+    confirmation.innerHTML =
+      `✅ Merci ${escapeHtml(data.nom)} ! Votre réservation a bien été envoyée.<br>` +
+      `Nous vous contactons sous 24h sur WhatsApp pour confirmation.`;
+  } else {
+    confirmation.className = 'confirmation err';
+    confirmation.innerHTML =
+      `⚠️ L'envoi automatique n'a pas abouti. ` +
+      `Envoyez votre demande en un clic : ` +
+      `<a href="${lienMail}">par email</a> ou ` +
+      `<a href="${lienWa}" target="_blank" rel="noopener">par WhatsApp</a>.`;
+  }
+  confirmation.style.display = 'block';
+  confirmation.scrollIntoView({ behavior:'smooth', block:'center' });
+
+  form.reset();
+  return false;
+}
+
+/* Récapitulatif texte (secours) */
+function texteBrut(d) {
+  return `Bonjour, je souhaite réserver\n` +
+         `Nom : ${d.nom}\n` +
+         `Téléphone : ${d.telephone}\n` +
+         `Email : ${d.email || '-'}\n` +
+         `Personnes : ${d.personnes}\n` +
+         `Formule : ${d.formule}\n` +
+         `Date : ${d.date_reservee}\n` +
+         `Message : ${d.message || '-'}`;
+}
+
+/* Anti-injection HTML */
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c =>
+    ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+}
+</script>
+
+</body>
+</html>
